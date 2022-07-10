@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: tinyhen-app-monitoring
+  namespace: default
+  labels:
+    release: kube-prometheus-stack
+spec:
+  endpoints:
+    - interval: 10s
+      path: /metrics
+      scrapeTimeout: 10s
+      port: tinyhen-app-port
+  selector:
+    matchLabels:
+      app: tinyhen-app
+---

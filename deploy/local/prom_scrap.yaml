@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 15s
+  scrape_timeout: 10s
+  evaluation_interval: 1m
+scrape_configs:
+  - job_name: myapp
+    scrape_interval: 2s
+    static_configs:
+      - targets: ["localhost:10010"]

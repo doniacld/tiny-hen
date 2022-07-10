@@ -1,0 +1,16 @@
+# Global options
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    grafana_dashboard: "true"
+namespace: default
+
+# Generate a ConfigMap for each dashboard
+configMapGenerator:
+
+  #################################################
+  # Views Dashboards
+  #################################################
+
+  - name: dashboards-henhouse-monitoring
+    files: [ dashboards/temp-hum-view.json ]

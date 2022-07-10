@@ -1,6 +1,7 @@
 # Binaries for programs and plugins
 bin
 data
+.idea
 
 # Test binary, built with `go test -c`
 *.test

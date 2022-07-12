@@ -46,28 +46,32 @@ docker_rm: docker_run
 prom:
 	prometheus --config.file=deploy/prometheus.yaml
 
-deploy:
+deploy: docker_build
 	# Create cluster with the right configuration
 	kind create cluster --name tinyhen --config deploy/cluster-config.yaml
 	# Customize the cluster with the configmap
-	kubectl kustomize deploy/monitoring
+	kubectl apply -k deploy/monitoring
 	# Install prometheus stack (Grafana, Prometheus operator, etc)
-	helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack
+	helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack --values deploy/values.yaml
 	# Deploy the prometheus service monitoring for the app
 	kubectl apply -f deploy/monitoring/service_monitor.yaml
+	# Load the docker image from the app to the cluster
+	kind load docker-image tinyhen-server:latest --name tinyhen
 	# Deploy tinyhen app
 	kubectl apply -f deploy/app.yaml
-	# Deploy the ingress
+	# Deploy the ingress to expose the app
 	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 	# Wait for the ingress to be ready
 	kubectl wait --namespace ingress-nginx \
 	  --for=condition=ready pod \
 	  --selector=app.kubernetes.io/component=controller \
-	  --timeout=90s
+	  --timeout=800s
 
 docker_load:
 	kind load docker-image tinyhen-server:latest --name tinyhen
 
 grafana:
 	# Create a port-forward to the grafana server (http://localhost:3000)
-	kubectl port-forward service/grafana 3000:3000
+	kubectl port-forward service/kube-prometheus-stack-grafana 3000:80
+destroy:
+	kind delete cluster --name=tinyhen

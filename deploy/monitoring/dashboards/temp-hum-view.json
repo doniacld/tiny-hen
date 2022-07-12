@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -21,11 +24,14 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 4,
   "links": [],
   "liveNow": false,
   "panels": [
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "description": "Display the humidity in percent over the time.",
       "fieldConfig": {
         "defaults": {
@@ -65,7 +71,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -98,12 +105,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "MUI6PO6nk"
+            "uid": "prometheus"
           },
-          "exemplar": true,
+          "editorMode": "builder",
           "expr": "humidity_percent",
-          "interval": "",
-          "legendFormat": "",
+          "legendFormat": "__auto",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -111,6 +118,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "description": "Display the temperature in degree celsius over the time.",
       "fieldConfig": {
         "defaults": {
@@ -150,7 +161,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -183,12 +195,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "MUI6PO6nk"
+            "uid": "prometheus"
           },
-          "exemplar": true,
+          "editorMode": "builder",
           "expr": "temperature_celsius",
-          "interval": "",
-          "legendFormat": "",
+          "legendFormat": "__auto",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -196,8 +208,8 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "",
-  "schemaVersion": 35,
+  "refresh": "5s",
+  "schemaVersion": 36,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -210,7 +222,6 @@
   "timepicker": {},
   "timezone": "",
   "title": "Henhouse monitoring",
-  "uid": "gEf0Qo6nk",
-  "version": 2,
+  "version": 0,
   "weekStart": ""
 }

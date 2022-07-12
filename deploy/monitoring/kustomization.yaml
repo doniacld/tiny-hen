@@ -12,5 +12,5 @@ configMapGenerator:
   # Views Dashboards
   #################################################
 
-  - name: dashboards-henhouse-monitoring
+  - name: dashboard-henhouse-monitoring
     files: [ dashboards/temp-hum-view.json ]

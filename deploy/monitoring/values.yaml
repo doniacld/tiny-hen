@@ -1,0 +1,8 @@
+grafana:
+  sidecar:
+    dashboards:
+      enabled: true
+      defaultFolderName: "General"
+      label: grafana_dashboard
+      labelValue: null
+      searchNamespace: ALL

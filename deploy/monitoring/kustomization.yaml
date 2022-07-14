@@ -3,7 +3,7 @@ generatorOptions:
   disableNameSuffixHash: true
   labels:
     grafana_dashboard: "true"
-namespace: default
+namespace: monitoring
 
 # Generate a ConfigMap for each dashboard
 configMapGenerator:

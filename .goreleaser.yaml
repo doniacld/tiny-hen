@@ -12,6 +12,7 @@ builds:
       - BUILDER=GoReleaser
     goos:
       - linux
+      - darwin
     main: ./cmd/
 
 release:
@@ -20,8 +21,8 @@ release:
     name: tiny-hen
   footer: |
     ## Docker Images
-    - `ghcr.io/doniacld/tiny-hen:{{ .Version }}`
-    - `ghcr.io/doniacld/tiny-hen:latest`
+    - docker pull `ghcr.io/doniacld/tiny-hen:{{ .Version }}`
+    - docker pull `ghcr.io/doniacld/tiny-hen:latest`
 
 dockers:
   - image_templates: ["ghcr.io/doniacld/tiny-hen:{{ .Version }}"]

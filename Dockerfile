@@ -1,7 +1,11 @@
-FROM golang:1.18
+#FROM golang:1.18
+#
+#RUN mkdir /app
+#WORKDIR /app
+#COPY tiny-hen tiny-hen
+#EXPOSE 10010
+#CMD ["tiny-hen"]
 
-RUN mkdir /app
-WORKDIR /app
-COPY . /app/
-EXPOSE 10010
-CMD ["/app/bin/tinyhen-server-amd64"]
+FROM scratch
+ENTRYPOINT ["/tiny-hen"]
+COPY tiny-hen /

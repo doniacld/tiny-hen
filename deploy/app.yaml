@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
     - name: tinyhen-app
-      image: tinyhen-server:latest
+      image: ghcr.io/doniacld/tiny-hen:latest
       imagePullPolicy: IfNotPresent
   restartPolicy: Always
 ---

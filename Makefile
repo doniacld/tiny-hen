@@ -65,3 +65,7 @@ prometheus:
 
 destroy:
 	kind delete cluster --name=tinyhen
+
+# Curls
+curl_measure:
+	curl -v -X POST -H "Content-Type: application/json" http://localhost/measure  -d '{"temp": 360, "hum": 480}'

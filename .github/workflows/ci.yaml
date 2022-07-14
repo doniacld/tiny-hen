@@ -14,10 +14,10 @@ jobs:
       - name: build
         run: make build
 
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: test
-        run: make test
+#  test:
+#    name: Test
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: test
+#        run: make test

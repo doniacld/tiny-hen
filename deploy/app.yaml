@@ -9,7 +9,7 @@ spec:
   containers:
     - name: tinyhen-app
       image: ghcr.io/doniacld/tiny-hen:latest
-      imagePullPolicy: IfNotPresent
+      imagePullPolicy: Always
   restartPolicy: Always
 ---
 # Service definition for the tinyhen-app

@@ -16,7 +16,7 @@ builds:
       - BUILDER=GoReleaser
     goos:
       - linux
-
+    main: ./cmd/
 dockers:
   - image_templates: ["ghcr.io/doniacld/tiny-hen:{{ .Version }}"]
     dockerfile: Dockerfile

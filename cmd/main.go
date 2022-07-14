@@ -11,11 +11,7 @@ import (
 	"github.com/doniacld/tiny-hen/cmd/prommetric"
 )
 
-// TODO Move to README.md
-//  curl -v -X POST -H "Content-Type: application/json" http://localhost:10010/measure  -d '{"temp": 270, "hum": 300}'
-//  curl -v -X GET -H "Content-Type: application/json" http://localhost:10010/hi
-//  curl -v -X GET -H "Content-Type: application/json" http://localhost:10010/metrics
-
+// init is called before main to initialize the prometheus registries
 func init() {
 	prometheus.MustRegister(prommetric.Temp)
 	prometheus.MustRegister(prommetric.Hum)
@@ -25,11 +21,11 @@ func main() {
 	fmt.Println("Listening on port 10010")
 	mux := http.NewServeMux()
 
-	// POST /measure
-	mux.HandleFunc("/measure", handlers.PostMeasure)
-
 	// GET /hi
 	mux.HandleFunc("/hi", handlers.GetHi)
+
+	// POST /measure
+	mux.HandleFunc("/measure", handlers.PostMeasure)
 
 	// GET /metrics
 	mux.Handle("/metrics", promhttp.Handler())

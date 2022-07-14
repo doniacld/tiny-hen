@@ -11,7 +11,12 @@ you can access it from where you call it.
 
 The answer is a basic greeting 
 ```json
-{"greet": "Hello little hen"}
+{"greeting": "Hello tiny hen!"}
+```
+
+> Calling the endpoint on cluster, remove the port.
+```bash
+curl -v -X GET http://localhost:10010/hi
 ```
 
 ## Measure
@@ -27,9 +32,15 @@ Measure is a HTTP endpoint where you can post your measure of temperature and hu
 }
 ```
 
+```bash
+ curl -v -X POST -H "Content-Type: application/json" http://localhost:10010/measure  -d '{"temp": 360, "hum": 480}' 
+```
+
 ## Metrics
 
-Metrics is a HTTP endpoint where you can get the latest metrics scrapped by Prometheus.
+Metrics is an HTTP endpoint where you can get the latest metrics scrapped by Prometheus.
 
 [GET /metrics](http://localhost/metrics)
 
+```bash
+ curl -v -X GET http://localhost:10010/metrics

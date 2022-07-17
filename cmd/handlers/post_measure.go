@@ -10,8 +10,8 @@ import (
 
 // PostMeasureResponse is the response from PostMeasure endpoint
 type PostMeasureResponse struct {
-	Temp int `json:"temp"`
-	Hum  int `json:"hum"`
+	Temperature float64 `json:"temperature"`
+	Humidity    float64 `json:"humidity"`
 }
 
 // PostMeasure is the handler for POST /measure endpoint
@@ -28,8 +28,8 @@ func PostMeasure(w http.ResponseWriter, r *http.Request) {
 
 	// send the data to prometheus
 	promMeasure := prommetric.PromMeasure{
-		Temp: measureResponse.Temp,
-		Hum:  measureResponse.Hum,
+		Temperature: measureResponse.Temperature,
+		Humidity:    measureResponse.Humidity,
 	}
 	promMeasure.SetTempAndHum()
 

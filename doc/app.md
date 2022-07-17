@@ -11,7 +11,7 @@ you can access it from where you call it.
 
 The answer is a basic greeting 
 ```json
-{"greeting": "Hello tiny hen!"}
+{"greeting": "Cluck!"}
 ```
 
 > Calling the endpoint on cluster, remove the port.
@@ -27,13 +27,13 @@ Measure is a HTTP endpoint where you can post your measure of temperature and hu
 
 ```json
 {
-  "temp": 23.5,
-  "hum": 31.5
+  "temperature": 23.5,
+  "humidity": 31.5
 }
 ```
 
 ```bash
- curl -v -X POST -H "Content-Type: application/json" http://localhost:10010/measure  -d '{"temp": 360, "hum": 480}' 
+ curl -v -X POST -H "Content-Type: application/json" http://localhost:10010/measure  -d '{"temperature": 23.5, "humidity": 31.5}' 
 ```
 
 ## Metrics
@@ -44,3 +44,4 @@ Metrics is an HTTP endpoint where you can get the latest metrics scrapped by Pro
 
 ```bash
  curl -v -X GET http://localhost:10010/metrics
+```

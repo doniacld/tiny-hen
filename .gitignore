@@ -1,14 +1,10 @@
 # Binaries for programs and plugins
-bin
-data
-.idea
+bin/
+.idea/
 
 # Test binary, built with `go test -c`
 *.test
 
 # Dependency directories (remove the comment below to include it)
-vendor/
-
-.ssh
-.repos
-dist
+# goreleaser directory when generating a dry-run release locally
+dist/

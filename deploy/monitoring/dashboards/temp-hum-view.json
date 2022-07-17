@@ -132,7 +132,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
-      "description": "Display the temperature in degree celsius over the time.",
+      "description": "Display the temperature in degree Celsius over the time.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -235,8 +235,8 @@
     "list": []
   },
   "time": {
-    "from": "2022-07-14T09:21:49.371Z",
-    "to": "2022-07-14T09:29:59.471Z"
+    "from": "now-1h",
+    "to": "now"
   },
   "timepicker": {},
   "timezone": "",

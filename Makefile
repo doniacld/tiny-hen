@@ -47,8 +47,6 @@ docker_rm: docker_run
 		$(DOCKERRM) tinyhen-server
 docker_load:
 	kind load docker-image tinyhen-server:latest --name tinyhen
-prom-local:
-	prometheus --config.file=deploy/prometheus.yaml
 
 # Deployment
 .PHONY: deploy
@@ -68,4 +66,4 @@ destroy:
 
 # Curls
 curl_measure:
-	curl -v -X POST -H "Content-Type: application/json" http://localhost/measure  -d '{"temp": 360, "hum": 480}'
+	curl -v -X POST -H "Content-Type: application/json" http://localhost/measure  -d '{"temperature": 31.2, "humidity": 41.6}'

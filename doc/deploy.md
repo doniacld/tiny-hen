@@ -4,7 +4,7 @@ https://kind.sigs.k8s.io/docs/user/ingress#ingress-nginx
 
 ## Create cluster
 ```bash
-kind create cluster --name tinyhen-test --config deploy/cluster-config.yaml
+kind create cluster --name tinyhen --config deploy/cluster-config.yaml
 ```
 
 Expected output:

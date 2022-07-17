@@ -8,26 +8,31 @@ import (
 )
 
 type PromMeasure struct {
-	Temp int `json:"temp"`
-	Hum  int `json:"hum"`
+	Temperature float64 `json:"temperature"`
+	Humidity    float64 `json:"humidity"`
 }
 
 var (
-	Temp = prometheus.NewGauge(prometheus.GaugeOpts{
+	TempGauge = prometheus.NewGauge(prometheus.GaugeOpts{
 		Name: "temperature_celsius",
 		Help: "The temperature of the hen house in celsius.",
 	})
 
-	Hum = prometheus.NewGauge(prometheus.GaugeOpts{
+	HumGauge = prometheus.NewGauge(prometheus.GaugeOpts{
 		Name: "humidity_percent",
 		Help: "The humidity of the hen house in percent.",
 	})
 )
 
+func RegisterGauges() {
+	prometheus.MustRegister(TempGauge)
+	prometheus.MustRegister(HumGauge)
+}
+
 func (m PromMeasure) SetTempAndHum() {
-	Temp.Set(float64(m.Temp / 10))
-	Hum.Set(float64(m.Hum / 10))
+	TempGauge.Set(m.Temperature)
+	HumGauge.Set(m.Humidity)
 
 	fmt.Printf("%s: SetTempAndHum set values: Temperature: %d °C, Humidity: %d %%\n",
-		time.Now().String(), m.Temp/10, m.Hum/10)
+		time.Now(), m.Temperature, m.Humidity)
 }

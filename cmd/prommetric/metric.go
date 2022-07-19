@@ -33,6 +33,6 @@ func (m PromMeasure) SetTempAndHum() {
 	TempGauge.Set(m.Temperature)
 	HumGauge.Set(m.Humidity)
 
-	fmt.Printf("%s: SetTempAndHum set values: Temperature: %d °C, Humidity: %d %%\n",
+	fmt.Printf("%s: SetTempAndHum set values: Temperature: %f °C, Humidity: %f %%\n",
 		time.Now(), m.Temperature, m.Humidity)
 }

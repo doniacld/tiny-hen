@@ -25,7 +25,7 @@ You should expect a 200 HTTP answer:
 < Connection: keep-alive
 ```
 
-If you have an Arduino board, you can flash [this program]() on your card using this command. Adjust the target to your model.
+If you have an Arduino board, you can flash [this program](https://github.com/doniacld/tinygo-discovery/blob/main/tiny-hen/main.go) on your card using this command. Adjust the target to your model.
 
 ```bash
 tinygo flash -target=arduino-nano33 wifinina/httppost/main.go

@@ -3,7 +3,7 @@ echo "
        ___  _              _ _
       |_ _|<_>._ _  _ _   | | | ___ ._ _
        | | | || ' || | |  | - |/ ._>| ' |
-       |_| |_||_|_|\_. |  |_|_|\___.|_|_|
+🐓     |_| |_||_|_|\_. |  |_|_|\___.|_|_|v     🐓
                    <___|                "
 
 echo "---------------- 🏠 Create cluster tinyhen ----------------"
@@ -17,6 +17,8 @@ kubectl apply -k deploy/monitoring
 
 # Install prometheus stack (Grafana, Prometheus operator, etc)
 echo "---------------- 🔎 Deploying kube prometheus stack with dashboard provider ----------------"
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
 helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack --values deploy/monitoring/values.yaml --namespace monitoring
 
 # Deploy the prometheus service monitoring for the app

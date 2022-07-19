@@ -10,11 +10,13 @@ import (
 	"github.com/doniacld/tiny-hen/cmd/prommetric"
 )
 
+const serverPort = ":10010"
+
 func main() {
 	// register the prometheus metrics
 	prommetric.RegisterGauges()
 
-	fmt.Println("Listening on port 10010")
+	fmt.Printf("Listening on port%s\n", serverPort)
 	mux := http.NewServeMux()
 
 	// GET /hi
@@ -26,7 +28,7 @@ func main() {
 	// GET /metrics
 	mux.Handle("/metrics", promhttp.Handler())
 
-	err := http.ListenAndServe(":10010", mux)
+	err := http.ListenAndServe(serverPort, mux)
 	if err != nil {
 		panic(err)
 	}

@@ -24,7 +24,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 28,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -576,7 +575,7 @@
               "mode": "off"
             }
           },
-          "decimals": 0,
+          "decimals": 2,
           "displayName": "humidity",
           "mappings": [
             {
@@ -703,7 +702,7 @@
               "mode": "off"
             }
           },
-          "decimals": 0,
+          "decimals": 2,
           "displayName": "humidity",
           "mappings": [
             {
@@ -716,14 +715,22 @@
               "type": "value"
             }
           ],
-          "max": 100,
-          "min": 0,
+          "max": 50,
+          "min": -10,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
                 "color": "blue",
                 "value": null
+              },
+              {
+                "color": "dark-blue",
+                "value": -10
+              },
+              {
+                "color": "blue",
+                "value": 0
               },
               {
                 "color": "#6ED0E0",
@@ -785,6 +792,198 @@
       ],
       "title": "Temperature (Celsius)",
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "left",
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 284
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 12
+      },
+      "id": 16,
+      "options": {
+        "footer": {
+          "enablePagination": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "9.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "builder",
+          "expr": "humidity_percent",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Humidity (Percent) table",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "Time",
+              "{__name__=\"humidity_percent\", endpoint=\"tinyhen-app-port\", instance=\"10.244.0.21:10010\", job=\"tinyhen-service\", namespace=\"default\", pod=\"tinyhen-app\", service=\"tinyhen-service\"}": "Humidity "
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "left",
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 284
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 12
+      },
+      "id": 17,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "9.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "builder",
+          "expr": "temperature_celsius",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Temperature (Celsius) table",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "Time",
+              "{__name__=\"humidity_percent\", endpoint=\"tinyhen-app-port\", instance=\"10.244.0.21:10010\", job=\"tinyhen-service\", namespace=\"default\", pod=\"tinyhen-app\", service=\"tinyhen-service\"}": "Temperature ",
+              "{__name__=\"temperature_celsius\", endpoint=\"tinyhen-app-port\", instance=\"10.244.0.21:10010\", job=\"tinyhen-service\", namespace=\"default\", pod=\"tinyhen-app\", service=\"tinyhen-service\"}": "Temperature"
+            }
+          }
+        }
+      ],
+      "type": "table"
     }
   ],
   "refresh": false,

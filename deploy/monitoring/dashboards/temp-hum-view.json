@@ -46,7 +46,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "percent"
         },
         "overrides": []
       },
@@ -80,7 +81,7 @@
           },
           "editorMode": "builder",
           "exemplar": false,
-          "expr": "humidity_percent",
+          "expr": "min_over_time(humidity_percent[$__interval])",
           "instant": true,
           "legendFormat": "__auto",
           "range": false,
@@ -109,7 +110,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "percent"
         },
         "overrides": []
       },
@@ -143,7 +145,7 @@
           },
           "editorMode": "builder",
           "exemplar": false,
-          "expr": "humidity_percent",
+          "expr": "avg_over_time(humidity_percent[$__interval])",
           "instant": true,
           "legendFormat": "__auto",
           "range": false,
@@ -172,7 +174,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "percent"
         },
         "overrides": []
       },
@@ -206,7 +209,7 @@
           },
           "editorMode": "builder",
           "exemplar": false,
-          "expr": "humidity_percent",
+          "expr": "max_over_time(humidity_percent[$__interval])",
           "instant": true,
           "legendFormat": "__auto",
           "range": false,
@@ -226,6 +229,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 1,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -235,7 +239,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "percent"
         },
         "overrides": []
       },
@@ -289,6 +294,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 1,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -298,7 +304,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "celsius"
         },
         "overrides": []
       },
@@ -332,7 +339,7 @@
           },
           "editorMode": "builder",
           "exemplar": false,
-          "expr": "temperature_celsius",
+          "expr": "min_over_time(temperature_celsius[$__interval])",
           "instant": true,
           "legendFormat": "__auto",
           "range": false,
@@ -352,6 +359,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 1,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -361,7 +369,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "celsius"
         },
         "overrides": []
       },
@@ -395,7 +404,7 @@
           },
           "editorMode": "builder",
           "exemplar": false,
-          "expr": "temperature_celsius",
+          "expr": "avg_over_time(temperature_celsius[$__interval])",
           "instant": true,
           "legendFormat": "__auto",
           "range": false,
@@ -424,7 +433,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "celsius"
         },
         "overrides": []
       },
@@ -458,7 +468,7 @@
           },
           "editorMode": "builder",
           "exemplar": false,
-          "expr": "temperature_celsius",
+          "expr": "max_over_time(temperature_celsius[$__interval])",
           "instant": true,
           "legendFormat": "__auto",
           "range": false,
@@ -478,6 +488,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 1,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -487,7 +498,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "celsius"
         },
         "overrides": []
       },
@@ -521,7 +533,7 @@
           },
           "editorMode": "builder",
           "exemplar": false,
-          "expr": "temperature_celsius",
+          "expr": "max_over_time(temperature_celsius[$__interval])",
           "instant": true,
           "legendFormat": "__auto",
           "range": false,

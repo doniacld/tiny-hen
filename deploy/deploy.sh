@@ -19,6 +19,7 @@ echo "---------------- 🏠 Create cluster tinyhen ----------------"
 
 kube_config_file="/home/$(whoami)/.kube/kind-tinyhen"
 sudo kind get kubeconfig --name tinyhen > "${kube_config_file}"
+chmod 600 "${kube_config_file}"
 export KUBECONFIG="${kube_config_file}"
 
 echo "---------------- 📈 Deploying configmap dashboard customization ----------------"

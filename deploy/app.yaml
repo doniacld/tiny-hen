@@ -3,6 +3,7 @@ kind: Pod
 apiVersion: v1
 metadata:
   name: tinyhen-app
+  namespace: tiny-hen
   labels:
     app: tinyhen-app
 spec:
@@ -17,6 +18,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: tinyhen-service
+  namespace: tiny-hen
   labels:
     app: tinyhen-app
 spec:
@@ -31,6 +33,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: tiny-hen-ingress
+  namespace: tiny-hen
 spec:
   rules:
     - http:

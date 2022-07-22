@@ -1,4 +1,11 @@
 #!/bin/bash
+
+set -e
+
+# Add a sudo option
+sudo=""
+[[ "$1" == "sudo" ]] && sudo="sudo"
+
 echo "
        ___  _              _ _
       |_ _|<_>._ _  _ _   | | | ___ ._ _
@@ -8,7 +15,11 @@ echo "
 
 echo "---------------- 🏠 Create cluster tinyhen ----------------"
 # Create cluster with the right configuration
-kind create cluster --name tinyhen --config deploy/cluster-config.yaml
+"${sudo}" kind create cluster --name tinyhen --config deploy/cluster-config.yaml
+
+kube_config_file="/home/$(whoami)/.kube/kind-tinyhen"
+sudo kind get kubeconfig --name tinyhen > "${kube_config_file}"
+export KUBECONFIG="${kube_config_file}"
 
 echo "---------------- 📈 Deploying configmap dashboard customization ----------------"
 kubectl create ns monitoring
@@ -27,6 +38,7 @@ kubectl apply -f deploy/monitoring/service_monitor.yaml
 
 # Deploy tinyhen app
 echo "---------------- 🐓 Deploying tinyhen app ----------------"
+kubectl create ns tiny-hen
 kubectl apply -f deploy/app.yaml
 
 # Deploy the ingress to expose the app

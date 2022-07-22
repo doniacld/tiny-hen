@@ -9,7 +9,11 @@ Prerequisites:
 
 First deploy the cluster, it will take a few minutes, go get the water boiling during this time.
 ```bash
+# If you don't need sudo to start docker containers
 make deploy
+
+# If you need sudo to start docker containers
+make sudo-deploy
 ```
 
 You can test (even you do not have an Arduino board) by sending a measure:

@@ -1,0 +1,44 @@
+# Pod definition for the tinyhen-app
+kind: Pod
+apiVersion: v1
+metadata:
+  name: tinyhen-app
+  labels:
+    app: tinyhen-app
+spec:
+  containers:
+    - name: tinyhen-app
+      image: localhost:6000/tinyhen-server:dev
+      imagePullPolicy: Never
+  restartPolicy: Always
+---
+# Service definition for the tinyhen-app
+apiVersion: v1
+kind: Service
+metadata:
+  name: tinyhen-service
+  labels:
+    app: tinyhen-app
+spec:
+  ports:
+    - name: tinyhen-app-port
+      port: 10010
+  selector:
+    app: tinyhen-app
+---
+# Ingress endpoint for the tinyhen-app service
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tiny-hen-ingress
+spec:
+  rules:
+    - http:
+        paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: tinyhen-service
+              port:
+                number: 10010

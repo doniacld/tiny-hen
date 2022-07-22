@@ -35,18 +35,18 @@ clean:
 		rm -f $(BINARY_PATH)
 
 # Docker for local operations
-build-linux:
+build_linux:
 		CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GOBUILD) -o $(BINARY_PATH)-amd64 -v $(SOURCE_ENTRYPOINT)
-docker_build: build-linux
-		$(DOCKERBBUILD) -t tinyhen-server .
-docker_run: build-linux docker_build
+docker_build: build_linux
+		$(DOCKERBBUILD) -f Dockerfile.local -t localhost:6000/tinyhen-server:dev .
+docker_run: build_linux docker_build
 		$(DOCKERRUN) -d -p 10010:10010 tinyhen-server
 docker_stop: docker_run
 		$(DOCKERSTOP) tinyhen-server
 docker_rm: docker_run
 		$(DOCKERRM) tinyhen-server
 docker_load:
-	kind load docker-image tinyhen-server:latest --name tinyhen
+	kind load docker-image localhost:6000/tinyhen-server:dev --name tinyhen
 
 # Deployment
 .PHONY: deploy

@@ -38,4 +38,6 @@ echo "---------------- ⏳ Waiting for the ingress to be ready ----------------"
 kubectl wait --namespace ingress-nginx \
   --for=condition=ready pod \
   --selector=app.kubernetes.io/component=controller \
-  --timeout=800s
+  --timeout=120s
+
+echo "---------------- 🐣 Happy monitoring! ----------------"

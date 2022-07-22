@@ -1,0 +1,3 @@
+FROM scratch
+COPY bin/tinyhen-server-amd64 /tiny-hen
+ENTRYPOINT ["/tiny-hen"]

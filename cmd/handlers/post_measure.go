@@ -25,6 +25,7 @@ func PostMeasure(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
+	defer r.Body.Close()
 
 	// send the data to prometheus
 	promMeasure := prommetric.PromMeasure{

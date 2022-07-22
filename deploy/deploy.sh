@@ -2,10 +2,6 @@
 
 set -e
 
-# Add a sudo option
-sudo=""
-[[ "$1" == "sudo" ]] && sudo="sudo"
-
 echo "
        ___  _              _ _
       |_ _|<_>._ _  _ _   | | | ___ ._ _
@@ -15,7 +11,11 @@ echo "
 
 echo "---------------- 🏠 Create cluster tinyhen ----------------"
 # Create cluster with the right configuration
-"${sudo}" kind create cluster --name tinyhen --config deploy/cluster-config.yaml
+if [[ "$1" == "sudo" ]] ; then
+    sudo kind create cluster --name tinyhen --config deploy/cluster-config.yaml
+else
+    kind create cluster --name tinyhen --config deploy/cluster-config.yaml
+fi
 
 kube_config_file="/home/$(whoami)/.kube/kind-tinyhen"
 sudo kind get kubeconfig --name tinyhen > "${kube_config_file}"

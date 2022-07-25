@@ -1,0 +1,69 @@
+swagger: "2.0"
+info:
+  description: "This is the TinyHen server API."
+  version: "1.0.0"
+  title: "Swagger TinyHen"
+host: "192.168.1.127"
+schemes:
+  - "http"
+paths:
+  /measure:
+    post:
+      tags:
+        - "tinyhen app"
+      summary: "Add a new measure of temperature and humidity"
+      description: ""
+      operationId: "postMeasure"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Measure that needs to be displayed"
+          required: true
+          schema:
+            $ref: "#/definitions/Measure"
+      responses:
+        "201":
+          description: "Created"
+  /hi:
+    get:
+      tags:
+      - "tinyhen app"
+      summary: "Hen greetings you"
+      description: ""
+      operationId: "greet"
+      responses:
+        "200":
+          description: "successful greeting"
+          schema:
+            $ref: "#/definitions/Greeting"
+  /metrics:
+    get:
+      tags:
+        - "monitoring"
+      summary: "Get prometheus metrics"
+      operationId: "getMetrics"
+      responses:
+        "200":
+          description: "successful operation"
+definitions:
+  Measure:
+    type: "object"
+    properties:
+      temperature:
+        type: "integer"
+        format: "float64"
+        example: 31.5
+      humidity:
+        type: "integer"
+        format: "float64"
+        example: 61.7
+  Greeting:
+    type: "object"
+    properties:
+      greeting:
+        type: "string"
+        example: "Cluck!"

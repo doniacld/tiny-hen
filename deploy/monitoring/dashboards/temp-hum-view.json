@@ -675,7 +675,7 @@
         "type": "prometheus",
         "uid": "prometheus"
       },
-      "description": "Display the humidity in percent over the time.",
+      "description": "Display the temperature in celsius over time.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -715,7 +715,7 @@
             }
           },
           "decimals": 2,
-          "displayName": "humidity",
+          "displayName": "temperature",
           "mappings": [
             {
               "options": {
@@ -894,6 +894,7 @@
             "indexByName": {},
             "renameByName": {
               "Time": "Time",
+              "{__name__=\"humidity_percent\", endpoint=\"tinyhen-app-port\", instance=\"10.244.0.16:10010\", job=\"tinyhen-service\", namespace=\"default\", pod=\"tinyhen-app\", service=\"tinyhen-service\"}": "Humidity",
               "{__name__=\"humidity_percent\", endpoint=\"tinyhen-app-port\", instance=\"10.244.0.21:10010\", job=\"tinyhen-service\", namespace=\"default\", pod=\"tinyhen-app\", service=\"tinyhen-service\"}": "Humidity "
             }
           }
@@ -990,6 +991,7 @@
             "renameByName": {
               "Time": "Time",
               "{__name__=\"humidity_percent\", endpoint=\"tinyhen-app-port\", instance=\"10.244.0.21:10010\", job=\"tinyhen-service\", namespace=\"default\", pod=\"tinyhen-app\", service=\"tinyhen-service\"}": "Temperature ",
+              "{__name__=\"temperature_celsius\", endpoint=\"tinyhen-app-port\", instance=\"10.244.0.16:10010\", job=\"tinyhen-service\", namespace=\"default\", pod=\"tinyhen-app\", service=\"tinyhen-service\"}": "Temperature",
               "{__name__=\"temperature_celsius\", endpoint=\"tinyhen-app-port\", instance=\"10.244.0.21:10010\", job=\"tinyhen-service\", namespace=\"default\", pod=\"tinyhen-app\", service=\"tinyhen-service\"}": "Temperature"
             }
           }

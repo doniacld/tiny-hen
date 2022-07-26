@@ -27,6 +27,7 @@ kubectl apply -f deploy/monitoring/service_monitor.yaml
 
 # Deploy tinyhen app
 echo "---------------- 🐓 Deploying tinyhen app ----------------"
+kubectl create ns tiny-hen
 kubectl apply -f deploy/app.yaml
 
 # Deploy the ingress to expose the app

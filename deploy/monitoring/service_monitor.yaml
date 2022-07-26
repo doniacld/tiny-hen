@@ -16,4 +16,4 @@ spec:
       app: tinyhen-app
   namespaceSelector:
     matchNames:
-      - default
+      - tinyhen

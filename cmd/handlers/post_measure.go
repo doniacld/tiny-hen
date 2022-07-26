@@ -21,7 +21,7 @@ func PostMeasure(w http.ResponseWriter, r *http.Request) {
 
 	err := json.NewDecoder(r.Body).Decode(&measureResponse)
 	if err != nil {
-		log.Printf("Error happened in JSON unmarshal. Err: %s", err.Error())
+		log.Printf("Error happened in JSON unmarshal. Err: %s\n", err.Error())
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}

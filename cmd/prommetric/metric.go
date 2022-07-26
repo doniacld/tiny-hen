@@ -1,8 +1,7 @@
 package prommetric
 
 import (
-	"fmt"
-	"time"
+	"log"
 
 	"github.com/prometheus/client_golang/prometheus"
 )
@@ -15,7 +14,7 @@ type PromMeasure struct {
 var (
 	TempGauge = prometheus.NewGauge(prometheus.GaugeOpts{
 		Name: "temperature_celsius",
-		Help: "The temperature of the hen house in celsius.",
+		Help: "The temperature of the hen house in Celsius.",
 	})
 
 	HumGauge = prometheus.NewGauge(prometheus.GaugeOpts{
@@ -33,6 +32,5 @@ func (m PromMeasure) SetTempAndHum() {
 	TempGauge.Set(m.Temperature)
 	HumGauge.Set(m.Humidity)
 
-	fmt.Printf("%s: SetTempAndHum set values: Temperature: %f °C, Humidity: %f %%\n",
-		time.Now(), m.Temperature, m.Humidity)
+	log.Printf("Set gauges valued: Temperature: %v °C, Humidity: %v %%\n", m.Temperature, m.Humidity)
 }

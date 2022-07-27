@@ -32,5 +32,5 @@ func (m PromMeasure) SetTempAndHum() {
 	TempGauge.Set(m.Temperature)
 	HumGauge.Set(m.Humidity)
 
-	log.Println("Set gauges: Temperature: %v°C, Humidity: %v%%", m.Temperature, m.Humidity)
+	log.Printf("Set gauges: Temperature: %v°C, Humidity: %v%%\n", m.Temperature, m.Humidity)
 }

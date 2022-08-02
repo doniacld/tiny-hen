@@ -53,6 +53,10 @@ docker_load:
 deploy:
 	./deploy/deploy.sh
 
+.PHONY: sudo-deploy
+sudo-deploy:
+	./deploy/deploy.sh sudo
+
 grafana:
 	# Create a port-forward to the grafana server (http://localhost:3000)
 	kubectl port-forward service/kube-prometheus-stack-grafana 3000:80 -n monitoring
@@ -63,6 +67,9 @@ prometheus:
 
 destroy:
 	kind delete cluster --name=tinyhen
+
+sudo-destroy:
+	sudo kind delete cluster --name=tinyhen
 
 # Curls
 curl_measure:

@@ -66,4 +66,4 @@ destroy:
 
 # Curls
 curl_measure:
-	curl -v -X POST -H "Content-Type: application/json" http://localhost/measure  -d '{"temperature": 31.2, "humidity": 41.6}'
+	curl -v -X POST -H "Content-Type: application/json" http://localhost:1919/measure  -d '{"temperature": 31.2, "humidity": 41.6}'

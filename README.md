@@ -25,10 +25,16 @@ You should expect a 200 HTTP answer:
 < Connection: keep-alive
 ```
 
-If you have an Arduino board, you can flash [this program](https://github.com/doniacld/tinygo-discovery/blob/main/tiny-hen/main.go) on your card using this command. Adjust the target to your model.
+## Hardware setup
+
+The needed material are 
+- an Arduino Nano 33 IoT or an equivalent board with a WiFi antenna
+- a DHT sensor to measure temperature and humidity
+
+You can then flash the [tinygo program](https://github.com/doniacld/tinygo-discovery/blob/main/tiny-hen/main.go) on your board using this command. 
 
 ```bash
-tinygo flash -target=arduino-nano33 wifinina/httppost/main.go
+tinygo flash -target=arduino-nano33 <yourpath>/tiny-hen/
 ```
 
 Then read from the serial port. To find it, you can use the following command, using tab to autocomplete the usb modem number:
